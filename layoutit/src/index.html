@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bootstrap 3, from LayoutIt!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+	<!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+	<!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+	<!--script src="js/less-1.3.3.min.js"></script-->
+	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="img/favicon.png">
+  
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/javascript">
+		function setUserInfo (nombre, provincia, categorias)
+		{
+			var code = "";
+			code += "<span style='color:black; font-weight:bold; font-size: 1.2em'>NOMBRE: <span style='color:green; font-weight:bold;  font-size: 1.2em'>"+nombre+"</span></span><br />"
+			code += "<span style='color:black; font-weight:bold; font-size: 1.2em'>PROVINCIA: <span style='color:green; font-weight:bold;  font-size: 1.2em'>"+provincia+"</span></span><br />"
+			code += "<span style='color:black; font-weight:bold; font-size: 1.2em'>CATEGORIAS: <span style='color:green; font-weight:bold;  font-size: 1.2em'>"+categorias+"</span></span><br />"
+			var container = document.getElementById("divContainerModalUserPerfil");
+			container.innerHTML = code;
+		}
+	</script>
+</head>
+
+<body> <!--#BAF46E;-->
+
+			<div class="modal fade" id="modalUserInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        <h4 class="modal-title" id="myModalLabel"><span>Perfil de Usuario:</span></h4>
+			      </div>
+			      <div id="divContainerModalUserPerfil" class="modal-body">
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="row clearfix">
+				<div class="col-md-2 column">
+					<img alt="Logo" class="hidden-xs hidden-sm" src="img/tree.png" style="padding-right:20%; width:100%; height:100%;">
+				</div>
+
+				<div class="col-md-7 column">
+					<div class="row clearfix">
+						<div class="col-md-12 column">
+							<nav class="navbar" role="navigation" style="background-color:transparent">
+								<div class="navbar-header">
+									 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-collapseCategory"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand visible-xs" href="#">Categorías</a>
+								</div>
+								
+								<div class="collapse navbar-collapse" id="bs-collapseCategory">
+									<ul class="nav navbar-nav">
+										<li>
+											<button class="btn btn-success btn-lg" type="button" style="color:white;">Informática</button>
+										</li>
+										<li>
+											<button class="btn btn-success btn-lg" type="button" style="color:white;">Arquitectura</button>
+										</li>
+										<li>
+											<button class="btn btn-success btn-lg" type="button" style="color:white;">Comercial</button>
+										</li>
+										<li>
+											<button class="btn btn-success btn-lg" type="button" style="color:white;">S. Hogar</button>
+										</li>
+										<li>
+											<button class="btn btn-success btn-lg" type="button" style="color:white;">Moda</button>
+										</li>										
+										<li class="dropdown">
+											<button class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown" type="button" style="color:white;">...</button>
+										
+											<ul class="dropdown-menu">
+												<li>
+													<a href="#">Cocina</a>
+												</li>
+												<li>
+													<a href="#">Transporte</a>
+												</li>
+												<li>
+													<a href="#">Deporte</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+								
+							</nav>
+						</div>
+					</div>
+					<nav class="navbar navbar-inverse" role="navigation">
+						<div class="navbar-header">
+							 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-collapseSearch"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand visible-xs" href="#">Buscar</a>
+						</div>
+						
+						<div class="collapse navbar-collapse" id="bs-collapseSearch" style="padding-top:1%;">
+							<input type="text" class="form-control" placeholder="PALABRAS CLAVE" style="float:left; width:30%;" />
+								<select class="form-control" style="float:left; margin-left:3%; width:25%; background-color:#4cae4c; color:white; font-weight: bold;">
+								  <option>Álava</option>
+								  <option>Albacete</option>
+								  <option>Alicante</option>
+								  <option>Almería</option>
+								  <option>Asturias</option>
+								  <option>Ávila</option>
+								  <option>Badajoz</option>
+								  <option>Barcelona</option>
+								  <option>Burgos</option>
+								  <option>Cáceres</option>
+								  <option>Cádiz</option>
+								  <option>Cantabria</option>
+								  <option>Castellón</option>
+								  <option>Ciudad Real</option>
+								  <option>Córdoba</option>
+								  <option>La Coruña</option>
+								  <option>Cuenca</option>
+								  <option>Gerona</option>
+								  <option>Granada</option>
+								  <option>Guadalajara</option>
+								  <option>Guipúzcua</option>
+								  <option>Huelva</option>
+								  <option>Huesca</option>
+								  <option>Islas Baleares</option>
+								  <option>Jaén</option>
+								  <option>León</option>
+								  <option>Lérida</option>
+								  <option>Lugo</option>
+								  <option>Madrid</option>
+								  <option>Málaga</option>
+								  <option>Murcia</option>
+								  <option>Navarra</option>
+								  <option>Orense</option>
+								  <option>Palencia</option>
+								  <option>Las Palmas</option>
+								  <option>Pontevedra</option>
+								  <option>La Rioja</option>
+								  <option>Salamanca</option>
+								  <option>Segovia</option>
+								  <option>Sevilla</option>
+								  <option>Soria</option>
+								  <option>Tarragona</option>
+								  <option>Santa Cruz de Tenerife</option>
+								  <option>Teruel</option>
+								  <option>Toledo</option>
+								  <option>Valencia</option>
+								  <option>Valladolid</option>
+								  <option>Vizcaya</option>
+								  <option>Zamora</option>
+								  <option>Zaragoza</option>
+								</select>
+								<select class="form-control" style="float:left; margin-left:3%; width:25%; background-color:#4cae4c; color:white; font-weight: bold;">
+								  <option>Informática</option>
+								  <option>Arquitectura</option>
+								  <option>Comercial</option>
+								  <option>Servicios del hogar</option>
+								  <option>Moda</option>
+								  <option>Cocina</option>
+								  <option>Transporte</option>
+								  <option>Deporte</option>
+								</select>
+
+								<button type="submit" class="btn btn-success hidden-xs" style="float:right; color:white;">Buscar</button>
+								<button type="submit" class="btn btn-success visible-xs" style="float:left; color:white;">Buscar</button>
+						</div>
+						
+					</nav>
+					<div class="row clearfix">
+						<div class="col-md-12 column">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-1 column" style="width:3%;"></div>
+				<div class="col-md-2 column">
+					<form role="form">
+						<div class="form-group">
+							 <label for="exampleInputEmail1">Email address</label><input type="email" class="form-control" id="exampleInputEmail1" style="width:90%;" />
+						</div>
+
+						<!--MD LG-->
+						<img alt="Key" src="img/key.png" class="visible-lg visible-md hoverImage" style="float:right; width:22%; height:100%;">
+						
+						<!--SM XS-->
+						<img alt="Key" src="img/key.png" class="visible-sm visible-xs hoverImage" style="float:right; width:10%; height:100%;">
+
+						<div class="form-group">
+							 <label for="exampleInputPassword1">Password</label><input type="password" class="form-control" id="exampleInputPassword1" style="width:90%;"/>
+						</div> 
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--SEGUNDA ROW GENERAL-->
+		<div class="row clearfix" style="padding-top:5%;">
+			<div class="col-md-12 column">
+			</div>
+		</div>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="row clearfix">
+				<div class="col-md-2 column">
+
+					<div class="panel-group" id="panelGroupListaIzq" style="float:left;">
+						<div class="panel" style="background-color:black;">
+							<div class="panel-heading">
+								 <a class="panel-title" data-toggle="collapse" data-parent="#panelGroupListaIzq" href="#panelElementInformacion" style="color:white;">Información</a>
+							</div>
+							<div id="panelElementInformacion" class="panel-collapse collapse">
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Nuestra política
+								</div>
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Normas y preguntas freqüentes
+								</div>
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									¿A quién ayudamos?
+								</div>
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Curiosidades
+								</div>
+							</div>
+						</div>
+						<div class="panel" style="background-color:black;">
+							<div class="panel-heading">
+								 <a class="panel-title" data-toggle="collapse" data-parent="#panelGroupListaIzq" href="#panelElementPerfil" style="color:white;">Perfil</a>
+							</div>
+							<div id="panelElementPerfil" class="panel-collapse collapse">
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Crear Perfil
+								</div>
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Editar Perfil
+								</div>
+							</div>
+						</div>
+						<div class="panel" style="background-color:black;">
+							<div class="panel-heading">
+								 <a class="panel-title" data-toggle="collapse" data-parent="#panelGroupListaIzq" href="#panelElementOfertas" style="color:white;">Ofertas</a>
+							</div>
+							<div id="panelElementOfertas" class="panel-collapse collapse">
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Todas
+								</div>
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Más recientes
+								</div>
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Más destacadas
+								</div>
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Más vistas
+								</div>
+							</div>
+						</div>
+						<div class="panel" style="background-color:black;">
+							<div class="panel-heading">
+								 <a class="panel-title" data-toggle="collapse" data-parent="#panelGroupListaIzq" href="#panelElementPeticiones" style="color:white;">Peticiones</a>
+							</div>
+							<div id="panelElementPeticiones" class="panel-collapse collapse">
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Todas
+								</div>
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Más recientes
+								</div>
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Más destacadas
+								</div>
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Más vistas
+								</div>
+							</div>
+						</div>
+						<div class="panel" style="background-color:black;">
+							<div class="panel-heading">
+								 <a class="panel-title" data-toggle="collapse" data-parent="#panelGroupListaIzq" href="#panelElementEventos" style="color:white;">Eventos</a>
+							</div>
+							<div id="panelElementEventos" class="panel-collapse collapse">
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Encuentros
+								</div>
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Concursos
+								</div>
+								<div class="panel-body" style="background-color:#4cae4c; color:white;">
+									Crea tu propio evento
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+				<div class="col-md-10 column" style="float:left;">
+					<div class="row clearfix">
+						<div class="col-md-1 column">
+						</div>
+						<div class="col-md-5 column">
+							<ul class="pagination" style="margin-top:0;">
+								<li>
+									<a href="#" style="color:white; background-color:black;-webkit-border-radius: 10px;
+									-moz-border-radius: 10px; border-radius: 10px;">Prev</a>
+								</li>
+								<li>
+									<a href="#" style="color:white; background-color:black;-webkit-border-radius: 10px;
+									-moz-border-radius: 10px; border-radius: 10px;">1</a>
+								</li>
+								<li>
+									<a href="#" style="color:white; background-color:black;-webkit-border-radius: 10px;
+									-moz-border-radius: 10px; border-radius: 10px;">2</a>
+								</li>
+								<li>
+									<a href="#" style="color:white; background-color:black;-webkit-border-radius: 10px;
+									-moz-border-radius: 10px; border-radius: 10px;">3</a>
+								</li>
+								<li>
+									<a href="#" style="color:white; background-color:black;-webkit-border-radius: 10px;
+									-moz-border-radius: 10px; border-radius: 10px;">4</a>
+								</li>
+								<li>
+									<a href="#" style="color:white; background-color:black;-webkit-border-radius: 10px;
+									-moz-border-radius: 10px; border-radius: 10px;">5</a>
+								</li>
+								<li>
+									<a href="#" style="color:white; background-color:black;-webkit-border-radius: 10px;
+									-moz-border-radius: 10px; border-radius: 10px;">Next</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-md-1 column">
+							 <button type="button" class="btn btn-success">Añadir petición</button>
+						</div>
+						<div class="col-md-5 column">
+						</div>
+					</div>
+					<div class="row clearfix">
+						<div class="col-md-12 column">
+							<div class="row clearfix">
+								<div class="col-md-1 column">
+								</div>
+								<div class="col-md-2 column">
+									<div class="row clearfix">
+										<div class="col-md-12 column">
+											<img alt="Star" class="hidden-xs hidden-sm" src="img/star1.png" style="float:left; width:20%; height:100%;">
+											<img alt="Star" class="hidden-xs hidden-sm" src="img/star1.png" style="float:left; width:20%; height:100%;">
+											<img alt="Star" class="hidden-xs hidden-sm" src="img/star1.png" style="float:left; width:20%; height:100%;">
+											<img alt="Star" class="hidden-xs hidden-sm" src="img/star2.png" style="float:left; width:20%; height:100%;">											
+											<img alt="Star" class="hidden-xs hidden-sm" src="img/star2.png" style="float:left; width:20%; height:100%;">	
+										</div>
+									</div>
+									<div class="row clearfix">
+										<div class="col-md-12 column">
+											<img alt="User" class="hidden-xs hidden-sm hoverImage" src="img/user_male.png" style="float:left; width:100%; height:100%;" data-toggle="modal" data-target="#modalUserInfo" onclick="setUserInfo('Lucas Navarro', 'Valencia', 'Informática');">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 column">
+									<div class="row clearfix">
+										<div class="col-md-12 column" style="float:left; width:50%; min-height:30px;"><span class="label" style="font-size:1.2em; color:green;"><span style="color:black;">PETICIÓN -- </span>Busco modelador 3D</span>
+										</div>
+									</div>
+									<div class="row clearfix">
+										<div class="col-md-10 column" style="color:black; padding-top:1%; width:80%; border-style: solid; border-color: black; border-width: 1; -webkit-border-radius: 30px;
+										-moz-border-radius: 30px; border-radius: 30px; background-color:white;">
+										<span>Buenos días. Soy programador y carezco completamente del arte gráfico y por ello quisiera que alguien lo haga por mí. Estoy trabajando sobre un videojuego para web y necesito modelos 3D de objetos domésticos en low-poly.</span>
+										<div class="row clearfix">
+											<div class="col-md-12 column" style="width:100%; height:20px; border-top-style: solid; border-top-color: black; border-top-width: 1;">
+
+											<!--LG-->
+												<img alt="respondidos" src="img/answer.png" style="float:left; width:10%; height:30px; margin-right:3%;"><span style="float:left; font-size:1.5em; font-weight:bold; color:green;">2</span>
+
+												<img alt="fecha" class="visible-lg" src="img/time.png" style="float:left; width:10%; height:30px; margin-left:15%; margin-right:3%;"><span class="visible-lg" style="float:left; font-size:1.5em; font-weight:bold; color:green;">3/11/2013</span>
+
+												<img alt="vistos" class="visible-lg" src="img/lupa.png" style="float:left; width:10%; height:30px; margin-left:15%;"><span class="visible-lg" style="float:left; font-size:1.5em; font-weight:bold; color:green;">12</span>
+
+											<!--MD-->
+
+												<img alt="fecha" class="visible-md visible-sm" src="img/time.png" style="float:left; width:10%; height:30px; margin-left:10%; margin-right:3%;"><span class="visible-md visible-sm" style="float:left; font-size:1.5em; font-weight:bold; color:green;">3/11/2013</span>
+
+												<img alt="vistos" class="visible-md visible-sm" src="img/lupa.png" style="float:left; width:10%; height:30px; margin-left:10%;"><span class="visible-md visible-sm" style="float:left; font-size:1.5em; font-weight:bold; color:green;">12</span>
+
+											<!--XS-->
+
+												<img alt="fecha" class="visible-xs" src="img/time.png" style="float:left; width:10%; height:30px;"><span class="visible-xs" style="float:left; font-size:1.5em; font-weight:bold; color:green;">3/11/2013</span>
+
+												<img alt="vistos" class="visible-xs" src="img/lupa.png" style="float:left; width:10%; height:30px;"><span class="visible-xs" style="float:left; font-size:1.5em; font-weight:bold; color:green;">12</span>																					
+											</div>
+										</div>
+										</div>
+										<div class="col-xs-2 column" style="float:left;">
+
+											<img alt="Contestar" src="img/pencil.png" class="hidden-xs hidden-sm hoverImage" style="float:left; width:50%; margin-right:5%; height:50px;">
+											<img alt="Añadir a Favoritos" src="img/pencil.png" class="visible-xs visible-sm hoverImage" style="float:left; width:50%; height:50px;">
+
+											<img alt="Contestar" src="img/favoritos.png" class="hidden-xs hidden-sm hoverImage" style="float:left; width:50%; height:50px; margin-top:15%;">
+											<img alt="Añadir a Favoritos" src="img/favoritos.png" class="visible-xs visible-sm" style="float:left; width:50%; height:50px;">
+
+										</div>
+									</div>
+								</div>
+								<div class="col-md-1 column">
+								</div>
+							</div>
+						</div>
+						
+						<div class="row clearfix">
+							<div class="col-md-12 column" style="padding-top:5%;"></div>
+						</div>
+						
+						<div class="col-md-12 column">
+							<div class="row clearfix">
+								<div class="col-md-1 column">
+								</div>
+								<div class="col-md-2 column">
+									<div class="row clearfix">
+										<div class="col-md-12 column">
+											<img alt="Star" class="hidden-xs hidden-sm" src="img/star1.png" style="float:left; width:20%; height:100%;">
+											<img alt="Star" class="hidden-xs hidden-sm" src="img/star1.png" style="float:left; width:20%; height:100%;">
+											<img alt="Star" class="hidden-xs hidden-sm" src="img/star1.png" style="float:left; width:20%; height:100%;">
+											<img alt="Star" class="hidden-xs hidden-sm" src="img/star1.png" style="float:left; width:20%; height:100%;">											
+											<img alt="Star" class="hidden-xs hidden-sm" src="img/star1.png" style="float:left; width:20%; height:100%;">	
+										</div>
+									</div>
+									<div class="row clearfix">
+										<div class="col-md-12 column">
+											<img alt="User" class="hidden-xs hidden-sm hoverImage" src="img/user_female.png" style="float:left; width:100%; height:100%;" data-toggle="modal" data-target="#modalUserInfo" onclick="setUserInfo('Laura', 'Barcelona', 'Servicios del Hogar');" >
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 column">
+									<div class="row clearfix">
+										<div class="col-md-12 column" style="float:left; width:50%; min-height:30px;"><span class="label" style="font-size:1.2em; color:green;"><span style="color:black;">PETICIÓN -- </span>Busco maquetador web</span>
+										</div>
+									</div>
+									<div class="row clearfix">
+										<div class="col-md-10 column" style="color:black; padding-top:1%; width:80%;  border-style: solid; border-color: black; border-width: 1; -webkit-border-radius: 30px;
+										-moz-border-radius: 30px; border-radius: 30px;">
+										<span>Yo y una amiga acabamos de empezar nuestro negocio de limpieza pero no sabemos nada a cerca de la informática. Nos gustaría que alguien nos hiciera una web bonita para darnos a conocer. Muchas gracias!</span>
+										<div class="row clearfix">
+											<div class="col-md-12 column" style="width:100%; height:20px; border-top-style: solid; border-top-color: black; border-top-width: 1;">
+
+											<!--LG-->
+												<img alt="respondidos" src="img/answer.png" style="float:left; width:10%; height:30px; margin-right:3%;"><span style="float:left; font-size:1.5em; font-weight:bold; color:green;">5</span>
+
+												<img alt="fecha" class="visible-lg" src="img/time.png" style="float:left; width:10%; height:30px; margin-left:15%; margin-right:3%;"><span class="visible-lg" style="float:left; font-size:1.5em; font-weight:bold; color:green;">4/11/2013</span>
+
+												<img alt="vistos" class="visible-lg" src="img/lupa.png" style="float:left; width:10%; height:30px; margin-left:15%;"><span class="visible-lg" style="float:left; font-size:1.5em; font-weight:bold; color:green;">28</span>
+
+											<!--MD-->
+
+												<img alt="fecha" class="visible-md visible-sm" src="img/time.png" style="float:left; width:10%; height:30px; margin-left:10%; margin-right:3%;"><span class="visible-md visible-sm" style="float:left; font-size:1.5em; font-weight:bold; color:green;">4/11/2013</span>
+
+												<img alt="vistos" class="visible-md visible-sm" src="img/lupa.png" style="float:left; width:10%; height:30px; margin-left:10%;"><span class="visible-md visible-sm" style="float:left; font-size:1.5em; font-weight:bold; color:green;">28</span>
+
+											<!--XS-->
+
+												<img alt="fecha" class="visible-xs" src="img/time.png" style="float:left; width:10%; height:30px;"><span class="visible-xs" style="float:left; font-size:1.5em; font-weight:bold; color:green;">4/11/2013</span>
+
+												<img alt="vistos" class="visible-xs" src="img/lupa.png" style="float:left; width:10%; height:30px;"><span class="visible-xs" style="float:left; font-size:1.5em; font-weight:bold; color:green;">28</span>																					
+											</div>
+										</div>
+										</div>
+										<div class="col-xs-2 column" style="float:left;">
+
+											<img alt="Contestar" src="img/pencil.png" class="hidden-xs hidden-sm hoverImage" style="float:left; width:50%; margin-right:5%; height:50px;">
+											<img alt="Añadir a Favoritos" src="img/pencil.png" class="visible-xs visible-sm" style="float:left; width:50%; height:50px;">
+
+											<img alt="Contestar" src="img/favoritos.png" class="hidden-xs hidden-sm hoverImage" style="float:left; width:50%; height:50px; margin-top:15%;">
+											<img alt="Añadir a Favoritos" src="img/favoritos.png" class="visible-xs visible-sm hoverImage" style="float:left; width:50%; height:50px;">
+
+										</div>
+									</div>
+								</div>
+								<div class="col-md-1 column">
+								</div>
+							</div>
+						</div>
+
+						<div class="row clearfix">
+							<div class="col-md-12 column" style="padding-top:5%;"></div>
+						</div>
+
+						<div class="col-md-12 column">
+							<div class="row clearfix">
+								<div class="col-md-1 column">
+								</div>
+								<div class="col-md-2 column">
+									<div class="row clearfix">
+										<div class="col-md-12 column">
+											<img alt="Star" class="hidden-xs hidden-sm" src="img/star1.png" style="float:left; width:20%; height:100%;">
+											<img alt="Star" class="hidden-xs hidden-sm" src="img/star2.png" style="float:left; width:20%; height:100%;">
+											<img alt="Star" class="hidden-xs hidden-sm" src="img/star2.png" style="float:left; width:20%; height:100%;">
+											<img alt="Star" class="hidden-xs hidden-sm" src="img/star2.png" style="float:left; width:20%; height:100%;">											
+											<img alt="Star" class="hidden-xs hidden-sm" src="img/star2.png" style="float:left; width:20%; height:100%;">	
+										</div>
+									</div>
+									<div class="row clearfix">
+										<div class="col-md-12 column">
+											<img alt="User" class="hidden-xs hidden-sm hoverImage" src="img/user_male.png" style="float:left; width:100%; height:100%;" data-toggle="modal" data-target="#modalUserInfo" onclick="setUserInfo('Jaime Romeo', 'Alicante', 'Informática, Comercial');">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 column">
+									<div class="row clearfix">
+										<div class="col-md-12 column" style="float:left; width:50%; min-height:30px;"><span class="label" style="font-size:1.2em; color:green;"><span style="color:black;">PETICIÓN -- </span>Necesitamos un programador experimentado en Java</span>
+										</div>
+									</div>
+									<div class="row clearfix">
+										<div class="col-md-10 column" style="color:black; padding-top:1%; width:80%; border-style: solid; border-color: black; border-width: 1; -webkit-border-radius: 30px;
+										-moz-border-radius: 30px; border-radius: 30px;">
+										<span>Muy buenas. Necesito con urgéncia un programador de al menos tres años de experiencia en Java. Se pretende hacer una aplicación para web y móvil y tenemos una idea muy clara del diseño y las funcionalidades pero no precisamos de un equipo formado en programación para el desarrollo y estaría bien que fuera lo antes posible. La aplicación que queremos hacer se trata de una agenda electrónica y ya tenemos los diseños hechos. Solo falta la mano de un programador que si cumple nuestros requisitos podrá unirse al equipo. Muchas gracias. Tenemos mucha ilusión con ese proyecto y trataremos con el respeto adecuado al esfuerzo del programador.</span>
+										<div class="row clearfix">
+											<div class="col-md-12 column" style="width:100%; height:20px; border-top-style: solid; border-top-color: black; border-top-width: 1;">
+
+											<!--LG-->
+												<img alt="respondidos" src="img/answer.png" style="float:left; width:10%; height:30px; margin-right:3%;"><span style="float:left; font-size:1.5em; font-weight:bold; color:green;">1</span>
+
+												<img alt="fecha" class="visible-lg" src="img/time.png" style="float:left; width:10%; height:30px; margin-left:15%; margin-right:3%;"><span class="visible-lg" style="float:left; font-size:1.5em; font-weight:bold; color:green;">4/11/2013</span>
+
+												<img alt="vistos" class="visible-lg" src="img/lupa.png" style="float:left; width:10%; height:30px; margin-left:15%;"><span class="visible-lg" style="float:left; font-size:1.5em; font-weight:bold; color:green;">3</span>
+
+											<!--MD-->
+
+												<img alt="fecha" class="visible-md visible-sm" src="img/time.png" style="float:left; width:10%; height:30px; margin-left:10%; margin-right:3%;"><span class="visible-md visible-sm" style="float:left; font-size:1.5em; font-weight:bold; color:green;">4/11/2013</span>
+
+												<img alt="vistos" class="visible-md visible-sm" src="img/lupa.png" style="float:left; width:10%; height:30px; margin-left:10%;"><span class="visible-md visible-sm" style="float:left; font-size:1.5em; font-weight:bold; color:green;">3</span>
+
+											<!--XS-->
+
+												<img alt="fecha" class="visible-xs" src="img/time.png" style="float:left; width:10%; height:30px;"><span class="visible-xs" style="float:left; font-size:1.5em; font-weight:bold; color:green;">4/11/2013</span>
+
+												<img alt="vistos" class="visible-xs" src="img/lupa.png" style="float:left; width:10%; height:30px;"><span class="visible-xs" style="float:left; font-size:1.5em; font-weight:bold; color:green;">3</span>																					
+											</div>
+										</div>
+										</div>
+										<div class="col-xs-2 column" style="float:left;">
+
+											<img alt="Contestar" src="img/pencil.png" class="hidden-xs hidden-sm hoverImage" style="float:left; width:50%; margin-right:5%; height:50px;">
+											<img alt="Añadir a Favoritos" src="img/pencil.png" class="visible-xs visible-sm" style="float:left; width:50%; height:50px;">
+
+											<img alt="Contestar" src="img/favoritos.png" class="hidden-xs hidden-sm hoverImage" style="float:left; width:50%; height:50px; margin-top:15%;">
+											<img alt="Añadir a Favoritos" src="img/favoritos.png" class="visible-xs visible-sm hoverImage" style="float:left; width:50%; height:50px;">
+
+										</div>
+									</div>
+								</div>
+								<div class="col-md-1 column">
+								</div>
+							</div>
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
